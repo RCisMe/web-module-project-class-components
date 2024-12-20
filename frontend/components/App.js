@@ -1,11 +1,47 @@
 import React from 'react'
+import Form from './Form'
+import TodoList from './TodoList'
+
+let id = 0;
+let getId = () => ++id;
+
+const initialTodos = [
+  { id: getId(), name: "Walk the dog", completed: false },
+  { id: getId(), name: "Learn React", completed: true },
+  { id: getId(), name: "Have Fun", completed: false },
+];
 
 export default class App extends React.Component {
+  state = {
+    todos: initialTodos, // Fixed the typo here
+  };
+  
+  addTodo = (name) => {
+    this.setState((prevState) => ({
+      todos: [...prevState.todos, { id: getId(), completed: false, name }], // Corrected typo and logic
+    }));
+  };
+
+  toggleCompletion = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((td) => {
+        if (id === td.id) {
+          return { ...td, completed: !td.completed }; // Fixed 'competed' to 'completed'
+        }
+        return td;
+      }),
+    }));
+  };
+
   render() {
     return (
       <div>
-        Todo App
+        <TodoList todos={this.state.todos} toggleCompletion={this.toggleCompletion} />
+        <Form addTodo={this.addTodo} />
       </div>
-    )
+    );
   }
 }
+   
+
+// new verison 
