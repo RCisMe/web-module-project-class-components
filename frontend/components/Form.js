@@ -9,14 +9,14 @@ export default class Form extends React.Component {
     evt.preventDefault();
     this.props.addTodo(this.state.name);
     this.setState({
-      name: '', // Directly updating the name state
+      name: '', 
     });
   };
 
   onChange = (evt) => {
     const { value } = evt.target;
     this.setState({
-      name: value, // Correctly updating the name state
+      name: value,
     });
   };
 
@@ -26,7 +26,7 @@ export default class Form extends React.Component {
         <input
           type="text"
           value={this.state.name}
-          onChange={this.onChange} // Corrected method name case
+          onChange={this.onChange}
         />
         <input type="submit" />
       </form>
