@@ -13,12 +13,12 @@ const initialTodos = [
 
 export default class App extends React.Component {
   state = {
-    todos: initialTodos, // Fixed the typo here
+    todos: initialTodos, 
   };
   
   addTodo = (name) => {
     this.setState((prevState) => ({
-      todos: [...prevState.todos, { id: getId(), completed: false, name }], // Corrected typo and logic
+      todos: [...prevState.todos, { id: getId(), completed: false, name }],
     }));
   };
 
@@ -26,7 +26,7 @@ export default class App extends React.Component {
     this.setState((prevState) => ({
       todos: prevState.todos.map((td) => {
         if (id === td.id) {
-          return { ...td, completed: !td.completed }; // Fixed 'competed' to 'completed'
+          return { ...td, completed: !td.completed }; 
         }
         return td;
       }),
@@ -44,4 +44,3 @@ export default class App extends React.Component {
 }
    
 
-// new verison 
